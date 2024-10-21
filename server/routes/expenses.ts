@@ -18,7 +18,7 @@ const expenses: Expense[] = [
 ]
 export const expensesRoute = new Hono()
     .get("/", (c) => {
-        return c.json({ expenses: []});
+        return c.json({ expenses: expenses});
     })
     // HTTP req検証用ミドルウェア
     .post("/", zValidator("json", createPostSchema), async (c) => {
