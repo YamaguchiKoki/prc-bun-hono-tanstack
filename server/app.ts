@@ -4,10 +4,9 @@ import { expensesRoute } from './routes/expenses'
 const app = new Hono()
 
 app.use('*', logger())
-app.get('/test', (c) => {
-    return c.json({ message: 'Hello World' })
-})
 
-app.route('/api/expenses', expensesRoute)
+const apiRoutes = app.basePath('/api').route('/expenses', expensesRoute)
+
 
 export default app
+export type ApiRoutes = typeof apiRoutes
